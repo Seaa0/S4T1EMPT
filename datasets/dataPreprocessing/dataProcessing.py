@@ -70,7 +70,7 @@ print()
 
 for column_name in uniqueTargetValues:  # Creating a new column in the dataset
     dataset[column_name] = dataset[column_name].apply(
-        lambda x: uniqueTargetValues[column_name].index(x)*100000 # multiplied by 100000 to space them so far apart that clustering algorithm does not notice them being together, because they are separate factors altogether
+        lambda x: uniqueTargetValues[column_name].index(x)*100000 # multiplied by 100000 to space them far apart enough for us observers to notice, because they are separate factors altogether
     )
 
 print('Final preprocessed dataset:\n',dataset.head().T) # look at final dataset
