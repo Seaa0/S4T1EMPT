@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-dataset = pd.read_csv("rawDataset.csv")
+dataset = pd.read_csv("datasets/rawDataset.csv")
 print("Dataset (First 5 Values Transposed):\n", dataset.head().T)  # look at dataset
 print()
 
@@ -75,4 +75,4 @@ for column_name in uniqueTargetValues:  # Creating a new column in the dataset
 
 print('Final preprocessed dataset:\n',dataset.head().T) # look at final dataset
 
-dataset.to_csv("preprocessedDataset.csv",index=False)
+dataset.to_csv("datasets/preprocessedDataset.csv",index=False)

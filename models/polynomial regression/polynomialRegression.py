@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-dataset = pd.read_csv("preprocessedDataset.csv")
+dataset = pd.read_csv("datasets/preprocessedDataset.csv")
 
 # just trying with 1 feature for now
 # linear regression

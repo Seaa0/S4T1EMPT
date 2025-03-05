@@ -38,7 +38,7 @@ using namespace std;
 
 int main() {
     cout << setprecision(100);
-    string filename = "preprocessedDataset.csv";
+    string filename = "../../datasets/preprocessedDataset.csv";
     auto [X, y] = readCSV(filename);
 
     

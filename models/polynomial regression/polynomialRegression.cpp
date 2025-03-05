@@ -36,7 +36,7 @@ tuple<vector<long double>, vector<long double>> readCSV(const string &filename) 
 
 int main() {
     cout << setprecision(100);
-    string filename = "preprocessedDataset.csv";
+    string filename = "../../datasets/preprocessedDataset.csv";
     auto [X, y] = readCSV(filename);
 
     vector<long double> weights(3, 0.0);
