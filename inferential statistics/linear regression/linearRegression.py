@@ -12,8 +12,8 @@ for colname in dataset:
         m = 0
         b = 0
         col = dataset[colname]
-        range = np.ptp(dataset[colname])
-        if range >= 100000: # qualitative data
+        ranges = np.ptp(dataset[colname])
+        if ranges >= 100000: # qualitative data
             continue
         if colname in ['sleep duration','quality of sleep']:
             continue

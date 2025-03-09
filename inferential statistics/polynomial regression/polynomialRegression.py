@@ -6,13 +6,14 @@ dataset = pd.read_csv("datasets/preprocessedDataset.csv")
 
 finalStats = {}
 
+print('Training...')
 for colname in dataset:
     for ylabel in ['sleep duration','quality of sleep']:
         check = 0
         weights = [0]*3
         col = dataset[colname]
-        range = np.ptp(dataset[colname])
-        if range >= 100000: # qualitative data
+        ranges = np.ptp(dataset[colname])
+        if ranges >= 100000: # qualitative data
             continue
         if colname in ['sleep duration','quality of sleep']:
             continue
@@ -43,15 +44,21 @@ for colname in dataset:
                             sstot.append((yi-y.mean())**2)
                         
                     except OverflowError:
+
                         print('Epoch',i)
                         print('Learning rate too large, trying again...')
                         i = 0
                         learningRate /= 10
-                        m = 0
-                        b = 0
-                        continue
-                djdwj.append(sum(currdjdwj)/len(currdjdwj)*2)
-
+                        weights = [0]*3
+                        break
+                
+                if len(currdjdwj) != len(X):
+                    break
+                else:
+                    djdwj.append(sum(currdjdwj)/len(currdjdwj)*2)
+            if len(djdwj) != 3:
+                continue
+                
             MSE = sum(SE)/len(SE)/3
             Mdjdwj = []
             assert len(djdwj) == 3
@@ -72,18 +79,18 @@ for colname in dataset:
                 print(f'MAE = {MAE}')
                 print('Moving on...')
                 finalStats[(colname,ylabel)] = (MSE,RMSE,Rsquared,MAE)
-            if prev == MSE or i >= 100000: # no point spending so long optimising the MSE by 0.00001
+                break
+            if prev == MSE or i >= 500000: # no point spending so long optimising the MSE by 0.00001
                 if MSE > 5:
                     print('Epoch',i)
+                    i = 0
                     print('Learning rate too large, trying again...')
                     learningRate /= 10
-                    m = 0
-                    b = 0
+                    weights = [0]*3
                     continue
                 check = 1
                 print('Epoch {}: MSE = {}'.format(i, MSE))
                 print('Ending loop...')
-                break
             prev = MSE
 
 for itm in finalStats:
