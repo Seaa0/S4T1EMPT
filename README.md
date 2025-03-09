@@ -4,6 +4,6 @@
 3. datasets/preprocessedDataset.csv is obtained by running dataPreprocessing/dataPreprocessing.py  
 4. dataPreprocessing/dataVisualisation.ipynb was then written and ran to obtain charts  
 5. descriptive statistics/descriptiveStats.py was then written and ran toi obtain most of the descriptive statistics as well as the box and whisker plots  
-6. descriptive statistics/columnstddev.py was written and ran to obtain standard deviation of the target values that correspond to each feature (among qualitative features)  
+6. descriptive statistics/columnstddev.py was written and ran to obtain standard deviation of the target values that correspond to each value of the feature (among qualitative features)  
 7. inferential statistics/linear regression/linearRegression.py was written and ran to obtain linear regression results  
 8. lastly, inferential statistics/polynomial regression/polynomialRegression.py was written and ran to obtain polynomial regression results  
